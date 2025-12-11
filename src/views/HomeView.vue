@@ -6,19 +6,14 @@
   </div>
 </template>
 
-
-
-
-<script>
+<script setup>
+import { ref } from 'vue';
 import questionsPage from '../components/questionsPage.vue';
 import resultsPage from '../components/resultsPage.vue';
 
-export default{
-  components: { questionsPage,resultsPage },
-  data() {
-    return {
-      currentQuestion: 0,  // Index
-      questions:[
+const currentQuestion = ref(0) 
+
+const questions = ref([
         {
           title: "Can I park here?",
           correctAnswer: 2,  // correct of array
@@ -180,21 +175,16 @@ export default{
           ]
         }
       ]
+    )
+
+const answerSelect = (index) => {
+      questions.value[currentQuestion.value].selectAnswer = index
     }
-  },
-  methods: {
-    answerSelect(index){
-      this.questions[this.currentQuestion].selectAnswer = index
-    },
-    nextQuestion(){
-      this.currentQuestion++
+const nextQuestion = () => {
+      currentQuestion.value++
     }
-  },
-}
- 
+
 </script>
-
-
 
 <style lang="css">
   .main{

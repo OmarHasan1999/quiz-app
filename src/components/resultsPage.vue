@@ -2,18 +2,21 @@
     <div class="results">
         <h1 class="resultsTitle">Results</h1>
         <div>
-            Correct answers {{ theQuestions.filter((ele) => {
+            Correct answers {{ theQuestions.theQuestions.filter((ele) => {
                 if(ele.correctAnswer == ele.selectAnswer) return true;
                 return false
-            }).length *2 }} / {{ theQuestions.length * 2 }}
+            }).length *2 }} / {{ theQuestions.theQuestions.length * 2 }}
         </div>
     </div>
 
 </template>
-<script>
-export default {
-    props:['theQuestions']
-}
+
+<script setup>
+const theQuestions = defineProps({
+    theQuestions:{
+        type:Object,
+    }
+})
 </script>
 
 

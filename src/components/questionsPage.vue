@@ -1,18 +1,18 @@
-<template lang="">
+<template>
     <div class="questionPage">
-       <h1>{{ theQuestions.title }}</h1>
-       <button class="option" :class="{ 'background-color-black': index === theQuestions.selectAnswer && theQuestions.selectAnswer !== null}" @click="$emit('on-answer-select',index)" v-for="(item,index) in theQuestions.option" :key="index">{{ item }}</button>
+       <h1>{{ theQuestions.theQuestions.title }}</h1>
+       <button class="option" :class="{ 'background-color-black': index === theQuestions.theQuestions.selectAnswer && theQuestions.theQuestions.selectAnswer !== null}" @click="$emit('on-answer-select',index)" v-for="(item,index) in theQuestions.theQuestions.option" :key="index">{{ item }}</button>
        <button class="next" @click="$emit('on-next-question',index)">Next question</button>
     </div>
 </template>
 
 
-
-<script>
-export default {
-    props:['theQuestions'],
-    
-}
+<script setup>
+const theQuestions = defineProps({
+    theQuestions:{
+        type:Object,
+    }
+})
 </script>
 
 
